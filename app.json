@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo_test",
-    "slug": "expo_test",
+    "name": "p4cam",
+    "slug": "PMA_Project",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,9 +17,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.uc.p4cam"
     },
     "android": {
+      "package": "com.uc.p4cam",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
