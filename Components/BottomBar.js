@@ -47,9 +47,10 @@ const BottomBar = ({ state, descriptors, navigation }) => {
             style={styles.button}
           >
             <Image
-              style={isFocused ? {opacity:1} : {opacity:0.5}}
+              style={[isFocused ? {opacity:1} : {opacity:0.5}, styles.buttonImg]}
               source={icons[index]}
             />
+
           </TouchableOpacity>
         );
       })}
@@ -60,14 +61,29 @@ const BottomBar = ({ state, descriptors, navigation }) => {
 const styles = StyleSheet.create({
     button: {
         flex: 1, 
-        alignItems: "center" 
+        alignItems: "center",
     },
+    buttonImg: {
+      width: 25, height: 25
+    },
+
     mainContainer:{
+        backgroundColor: "#EDEDED",
         flexDirection: "row",
-        height: 88,
+        //height: 100,
         justifyContent: "space-around",
         alignItems: "center",
-        backgroundColor: "#EDEDED"
+        paddingTop: 20,
+        paddingBottom: 40,
+        
+        shadowColor: '#1F1F1F',
+        shadowOffset: {
+          width: 0,
+          height: -2
+        },
+        shadowRadius: 10,
+        shadowOpacity: 0.15,
+        elevation: 50
       }
 })
 

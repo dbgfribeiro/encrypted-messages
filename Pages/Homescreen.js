@@ -8,6 +8,7 @@ import { StyleSheet,
         Modal } from 'react-native';
 
 import { Camera } from 'expo-camera';
+import { BlurView } from 'expo-blur';
 
 const HomeScreen = (props) => {
     const [hasPermission, setHasPermission] = useState(null);
@@ -28,8 +29,17 @@ const HomeScreen = (props) => {
     if (hasPermission === false) {
         return <Text>No access to camera</Text>;
     }
+
+    
+    const modalIcons = [
+      require("../assets/a.png"),
+      require("../assets/x.png"),
+    ]
+    
+
+
     return (
-        <View style={styles.container}>
+        <View style={styles.container} >
            <Modal
             animationType="slide"
             transparent={true}
@@ -40,7 +50,9 @@ const HomeScreen = (props) => {
             }}
           >
             <View style={styles.centeredView}>
-              <View style={styles.modalView}>
+              <BlurView
+              intensity={90}
+              style={styles.modalView}>
                 <Text style={styles.modalText}>
                 Este projeto foca-se na criação de uma língua que possibilite a interação entre pelo menos dois indivíduos, utilizando a criptologia como ferramenta para traduzir palavras em formas.
                 O projeto evolui assim que os utilizadores se sintam confortáveis para explorar a língua.
@@ -55,26 +67,28 @@ const HomeScreen = (props) => {
                 >
                   <Text style={styles.textStyle}>Close</Text>
                 </Pressable>
-              </View>
+              </BlurView>
             </View>
-      </Modal>
+           </Modal>
 
 
     
       <Camera style={styles.camera} type={type}>
         <View style={styles.overlay}>
+        
         <Image
         style={styles.overlayCode}
-        source={require('../assets/codew.png')}
+        source={require('../assets/code.png')}
         />
         </View>
 
         <TouchableOpacity
           style={styles.iconContainer}
-          onPress={() => setModalVisible(true)}>
+          onPress={() => setModalVisible(true)}
+          >
           <Image
             style={styles.icon}
-            source={require('../assets/menu.png')}
+            source={modalIcons[0]}
           />
         </TouchableOpacity>
       </Camera>
@@ -91,8 +105,7 @@ const styles = StyleSheet.create({
     },
     iconContainer:{
       position: 'absolute',
-      width: 60, height: 60,
-      top: 55, right: 25,
+      top: 65, right: 20,
       shadowColor: "#000",
       shadowOffset: {
         width: 0,
@@ -102,7 +115,7 @@ const styles = StyleSheet.create({
       shadowRadius: 10,
     },
     icon:{
-      width: 60, height: 60,
+      width: 55, height: 55,
     },
     camera: {
       flex: 1,
@@ -112,15 +125,15 @@ const styles = StyleSheet.create({
   
     overlay: {
       borderRadius: 1000,
-      width: 350,
-      height: 350,
+      width: 375,
+      height: 375,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: "rgba(36,38,39,0.4)",
+      backgroundColor: "rgba(237,237,237,0.2)",
     },
     overlayCode: {
       resizeMode: 'contain',
-      width:315,
+      width:250,
     },
     buttonContainer: {
       borderRadius: 10,
@@ -138,11 +151,12 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "rgba(36,38,39,0.5)",
     },
     modalView: {
       margin: 20,
-      backgroundColor: "#242627",
+      height: 600,
+      backgroundColor: "#EDEDED",
+      overflow: 'hidden',
       borderRadius: 15,
       paddingVertical: 100,
       paddingHorizontal: 35,
@@ -162,18 +176,18 @@ const styles = StyleSheet.create({
       elevation: 2
     },
     buttonClose: {
-      backgroundColor: "#FFF",
+      backgroundColor: "#1F1F1F",
       position: "absolute",
       bottom: 35,
     },
     textStyle: {
-      color: "#000",
+      color: "#FFF",
       fontWeight: "bold",
     },
     modalText: {
       marginBottom: 15,
       textAlign: "left",
-      color: "#fff"
+      color: "#1F1F1F"
     }
   });
 
