@@ -1,17 +1,15 @@
 import React from 'react';
 import { StyleSheet,
         View,
-        Text} from 'react-native';
+        Text,
+      } from 'react-native';
 
 const WriteScreen = (props) => {
+
     return (
       <View style={styles.container}>
-      
-      <View style={styles.baseText}>
-        <Text style={styles.baseTitle}>keys.</Text>
-
+        
       </View>
-    </View>
     )
 }
 

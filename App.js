@@ -10,7 +10,7 @@ import {
 } from '@expo-google-fonts/space-mono';
 
 import BottomBar from "./Components/BottomBar"
-import HomeScreen from "./Pages/Homescreen.js"
+import HomeScreen from "./Pages/HomeScreen.js"
 import AboutScreen from "./Pages/AboutScreen.js"
 import GalleryScreen from "./Pages/GalleryScreen"
 import KeysScreen from "./Pages/KeysScreen"

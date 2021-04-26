@@ -9,8 +9,30 @@ import { StyleSheet,
 
 import { Camera } from 'expo-camera';
 import { BlurView } from 'expo-blur';
+import { render } from 'react-dom';
+
+import Carousel from '../Components/Carousel';
+import {keysData} from '../Data/KeysData';
 
 const HomeScreen = (props) => {
+
+    /*---TOGGLE ALPHABET BUTTONS---*/
+    const alphabetIcons = [
+      require("../assets/a.png"),
+      require("../assets/x.png"),
+    ];
+
+    var iconDisplay = 0;
+    const [alphabetDisplay, setAlphabetDisplay] = useState(false);
+    if(alphabetDisplay == true){
+      iconDisplay = 1;
+    }
+    else{
+      iconDisplay = 0;
+    }
+
+
+    /*---LOAD MOBILE CAMERA---*/
     const [hasPermission, setHasPermission] = useState(null);
     const [type, setType] = useState(Camera.Constants.Type.back);
 
@@ -31,17 +53,12 @@ const HomeScreen = (props) => {
     }
 
     
-    const modalIcons = [
-      require("../assets/a.png"),
-      require("../assets/x.png"),
-    ]
-    
-
-
     return (
+      
         <View style={styles.container} >
+
            <Modal
-            animationType="slide"
+            animationType="fade"
             transparent={true}
             visible={modalVisible}
             onRequestClose={() => {
@@ -50,6 +67,19 @@ const HomeScreen = (props) => {
             }}
           >
             <View style={styles.centeredView}>
+            
+            <TouchableOpacity
+              style={styles.iconContainer}
+              onPress={
+              () => {
+              setModalVisible(!modalVisible);
+              setAlphabetDisplay(!alphabetDisplay);
+              }
+           }
+        >
+        <Image style={styles.icon} source={alphabetIcons[iconDisplay]}/>
+        </TouchableOpacity>            
+
               <BlurView
               intensity={90}
               style={styles.modalView}>
@@ -61,12 +91,6 @@ const HomeScreen = (props) => {
                 {"\n"}{"\n"}
                 Todo o projeto também proporciona ao utilizador uma oportunidade de aprendizagem e desenvolvimento pessoal, neste caso um processo de aprendizagem rápido, possivelmente agilizado com a interação social.
                 </Text>
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setModalVisible(!modalVisible)}
-                >
-                  <Text style={styles.textStyle}>Close</Text>
-                </Pressable>
               </BlurView>
             </View>
            </Modal>
@@ -74,22 +98,18 @@ const HomeScreen = (props) => {
 
     
       <Camera style={styles.camera} type={type}>
-        <View style={styles.overlay}>
-        
-        <Image
-        style={styles.overlayCode}
-        source={require('../assets/code.png')}
-        />
-        </View>
+      <Carousel  data = {keysData}/>
 
         <TouchableOpacity
           style={styles.iconContainer}
-          onPress={() => setModalVisible(true)}
-          >
-          <Image
-            style={styles.icon}
-            source={modalIcons[0]}
-          />
+          onPress={
+            () => {
+              setModalVisible(!modalVisible);
+              setAlphabetDisplay(!alphabetDisplay);
+              }
+           }
+        >
+        <Image style={styles.icon} source={alphabetIcons[iconDisplay]}/>
         </TouchableOpacity>
       </Camera>
 
@@ -148,9 +168,9 @@ const styles = StyleSheet.create({
   /*MODAL STYLE*/ 
   
     centeredView: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
+      justifyContent: 'center',
+      alignItems: 'center',
+      flex:1
     },
     modalView: {
       margin: 20,
@@ -169,16 +189,6 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.25,
       shadowRadius: 4,
       elevation: 5
-    },
-    button: {
-      borderRadius: 5,
-      padding: 10,
-      elevation: 2
-    },
-    buttonClose: {
-      backgroundColor: "#1F1F1F",
-      position: "absolute",
-      bottom: 35,
     },
     textStyle: {
       color: "#FFF",
