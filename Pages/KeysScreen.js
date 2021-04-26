@@ -3,14 +3,16 @@ import { StyleSheet,
         View,
         Text} from 'react-native';
 
+import Grid from '../Components/Grid' 
+
 const KeysScreen = (props) => {
     return (
       <View style={styles.container}>
       
       <View style={styles.baseText}>
         <Text style={styles.baseTitle}>keys.</Text>
-
       </View>
+      <Grid style={styles.grid}/>
     </View>
     )
 }

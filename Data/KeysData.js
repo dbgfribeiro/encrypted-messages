@@ -2,19 +2,19 @@ export const keysData =
 [
     {
         title: 'by Alexandre Pinho',
-        url: '',
+        url: 'https://i.imgur.com/y7knQzV.png',
         id: 1
     },
 
     {
         title: 'by Carlota Silva',
-        url: '',
+        url: 'https://i.imgur.com/y7knQzV.png',
         id: 2
     },
 
     {
         title: 'by Diogo Ribeiro',
-        url: '',
+        url: 'https://i.imgur.com/y7knQzV.png',
         id: 3
     },
 

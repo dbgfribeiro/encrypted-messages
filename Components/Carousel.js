@@ -48,7 +48,12 @@ const Carousel = ({data}) => {
                         return(
                             <Animated.View
                                 key = {i}
-                                style = {{opacity, height: 50, width: 50,  backgroundColor: '#595959', margin: 8, borderRadius:100}}
+                                style = {{opacity,
+                                height: 50, width: 50,
+                                backgroundColor: '#EDEDED',
+                                margin: 8,
+                                borderRadius:100,
+                                borderWidth: 2,}}
                             />
                         )
                     })}
@@ -64,9 +69,9 @@ const styles = StyleSheet.create({
         top: height / 5
     },
     dotView:{
-        marginTop: 100,
+        marginTop: 80,
         flexDirection: 'row',
         justifyContent: 'center',
-    }
+    },
 });
 export default Carousel

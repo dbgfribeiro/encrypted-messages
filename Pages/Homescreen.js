@@ -142,19 +142,6 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center"
     },
-  
-    overlay: {
-      borderRadius: 1000,
-      width: 375,
-      height: 375,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: "rgba(237,237,237,0.2)",
-    },
-    overlayCode: {
-      resizeMode: 'contain',
-      width:250,
-    },
     buttonContainer: {
       borderRadius: 10,
       color:  "#000",

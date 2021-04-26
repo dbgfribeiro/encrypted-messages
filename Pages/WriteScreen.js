@@ -4,12 +4,14 @@ import { StyleSheet,
         Text,
       } from 'react-native';
 
-const WriteScreen = (props) => {
 
+const WriteScreen = (props) => {
     return (
       <View style={styles.container}>
-        
+      <View style={styles.baseText}>
+        <Text style={styles.baseTitle}>write.</Text>
       </View>
+    </View>
     )
 }
 
@@ -28,4 +30,5 @@ const styles = StyleSheet.create({
      color: '#1f1f1f'
   },
 });
+
 export default WriteScreen;

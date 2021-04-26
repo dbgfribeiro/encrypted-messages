@@ -39,10 +39,12 @@ const styles = StyleSheet.create({
         width: width - 20,
         height: height / 3,
         borderRadius: 15,
+        resizeMode: 'contain',
+        width:250,
     },
     itemTitle:{
         fontFamily: 'SpaceMono_700Bold',
-        color: '#1f1f1f'
+        color: '#fff'
     }
 });
 export default CarouselItem
