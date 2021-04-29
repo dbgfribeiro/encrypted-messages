@@ -60,6 +60,7 @@ const HomeScreen = (props) => {
            <Modal
             animationType="fade"
             transparent={true}
+            useNativeDriver={true}
             visible={modalVisible}
             onRequestClose={() => {
               Alert.alert("Modal has been closed.");

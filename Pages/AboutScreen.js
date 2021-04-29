@@ -1,14 +1,25 @@
 import React from 'react';
 import { StyleSheet,
         View,
-        Text, } from 'react-native';
+        Text,
+        ScrollView} from 'react-native';
+
+import ScrollViewIndicator from 'react-native-scroll-indicator';
 
 const AboutScreen = (props) => {
+
     return (
         <View style={styles.container}>
 
-          <View style={styles.baseText}>
+        <View>
+          <View
+          style={styles.baseText}
+          >
+
             <Text style={styles.baseTitle}>info.</Text>
+
+
+            <ScrollView>
 
             <Text style={styles.infoText}>
 
@@ -31,10 +42,24 @@ const AboutScreen = (props) => {
               </Text>
 
 
-            </Text>
+              {"\n"}
+              {"\n"}
+              {"\n"}
 
+              <Text style={styles.infoTitle}>Step 3</Text>
+              {"\n"}
+              <Text style={styles.infoContent}>This sentence will be a description of the third step.
+                {"\n"}
+                <Text style={{ opacity: 0.5 }}>Nulla sit amet nisi dictum, consectetur metus eget, luctus ex. Ut at augue vel nulla convallis finibus. Donec facilisis posuere est. Duis rhoncus est eu nulla blandit tempus.</Text>
+              </Text>
+
+            </Text>
+          </ScrollView>
+          </View>
           </View>
         </View>
+
+        
     )
 }
 
@@ -45,7 +70,8 @@ const styles = StyleSheet.create({
   },
   baseText:{
     paddingHorizontal: 30,
-    paddingVertical: 80,
+    paddingTop: 80,
+    paddingBottom: 4,
   },
   baseTitle: {
      fontSize: 32,
