@@ -1,0 +1,30 @@
+{
+  "name": "Processing.js",
+  "version": "1.6.6",
+  "main": "processing.js",
+  "ignore": [
+    "bundle",
+    "lib",
+    "node_modules",
+    "src",
+    "test",
+    "test.js",
+    "test.html",
+    "build.js",
+    "Gruntfile.js",
+    "minify.js",
+    "package.json",
+    "server.js"
+  ],
+  "homepage": "https://github.com/processing-js/processing-js",
+  "_release": "1.6.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.6.6",
+    "commit": "4f7ae1c685131ec7ec2e68037fffce1ce93e9eca"
+  },
+  "_source": "https://github.com/processing-js/processing-js.git",
+  "_target": "^1.6.6",
+  "_originalSource": "Processing.js",
+  "_direct": true
+}

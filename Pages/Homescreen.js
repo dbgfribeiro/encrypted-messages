@@ -4,15 +4,24 @@ import { StyleSheet,
         View,
         TouchableOpacity,
         Pressable,
+        Dimensions,
+        Platform,
+        Button,
         Image,
         Modal } from 'react-native';
 
 import { Camera } from 'expo-camera';
 import { BlurView } from 'expo-blur';
-import { render } from 'react-dom';
+//import { render } from 'react-dom';
 
 import Carousel from '../Components/Carousel';
 import {keysData} from '../Data/KeysData';
+
+
+import * as ImagePicker from 'expo-image-picker';
+import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
+import { color } from 'react-native-reanimated';
+
 
 const HomeScreen = (props) => {
 
@@ -31,12 +40,26 @@ const HomeScreen = (props) => {
       iconDisplay = 0;
     }
 
+    const [modalVisible, setModalVisible] = useState(false);
 
+
+    
     /*---LOAD MOBILE CAMERA---*/
     const [hasPermission, setHasPermission] = useState(null);
     const [type, setType] = useState(Camera.Constants.Type.back);
 
-    const [modalVisible, setModalVisible] = useState(false);
+  
+    /*---LOAD CAMERA ROLL IMAGE---*/
+    const [image, setImage] = useState(null);
+    const [imageVisible, setImageVisible] = useState(false);
+    var cameraRoll = '+';
+    if(imageVisible == true){
+      cameraRoll = 'x';
+    }
+    else{
+      var cameraRoll = '+';
+    }
+
 
     useEffect(() => {
         (async () => {
@@ -50,6 +73,22 @@ const HomeScreen = (props) => {
     }
     if (hasPermission === false) {
         return <Text>No access to camera</Text>;
+    }
+
+
+  
+    //camera roll image pick
+    const {width, height} = Dimensions.get("window")
+    const PickImage = async() => {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        //allowsEditing: true,
+        aspect:[16,9],
+        quality:1
+      })
+      if(!result.cancelled){
+        setImage(result.uri)
+      }
     }
 
     
@@ -76,12 +115,11 @@ const HomeScreen = (props) => {
               setModalVisible(!modalVisible);
               setAlphabetDisplay(!alphabetDisplay);
               }
-           }
-        >
-        <Image style={styles.icon} source={alphabetIcons[iconDisplay]}/>
-        </TouchableOpacity>            
-
-              <BlurView
+            }
+            >
+              <Image style={styles.icon} source={alphabetIcons[iconDisplay]}/>
+            </TouchableOpacity>
+            <BlurView
               intensity={90}
               style={styles.modalView}>
                 <Text style={styles.modalText}>
@@ -99,9 +137,36 @@ const HomeScreen = (props) => {
 
     
       <Camera style={styles.camera} type={type}>
+      {image &&
+        <View style={[styles.imageContainer, {
+              position:'absolute',
+              backgroundColor: 'rgba(0,0,0,0.5)',
+              top:0,
+              left:0,
+              height: height,
+              width: width,
+        }]}>
+        <ReactNativeZoomableView
+        maxZoom={1.5}
+        minZoom={0.5}
+        zoomStep={0.5}
+        initialZoom={1}
+        bindToBorders={true}
+        captureEvent={true}
+        >
+          <Image
+            source={{uri:image}}
+            style={{
+              flex: 1, width: null, height: '100%'
+              }}
+          />
+          </ReactNativeZoomableView>
+        </View>
+        }
       <Carousel  data = {keysData}/>
+      </Camera>
 
-        <TouchableOpacity
+      <TouchableOpacity
           style={styles.iconContainer}
           onPress={
             () => {
@@ -111,9 +176,27 @@ const HomeScreen = (props) => {
            }
         >
         <Image style={styles.icon} source={alphabetIcons[iconDisplay]}/>
-        </TouchableOpacity>
-      </Camera>
+      </TouchableOpacity>
 
+
+      <TouchableOpacity
+        style={styles.importImage}
+        onPress={
+            () => {
+              
+              }
+           }
+      >
+        <Button
+          title={cameraRoll}
+          color="#1f1f1f"
+          fontSize="64"
+          onPress={PickImage}/>
+      </TouchableOpacity>
+
+      
+      
+      
 
     </View>
     )
@@ -151,6 +234,14 @@ const styles = StyleSheet.create({
       padding: 15,
       bottom: 45,
       left: 40,
+    },
+    importImage:{
+      backgroundColor:'#EDEDED',
+      position: 'absolute',
+      top: 65, left: 20,
+      paddingHorizontal: 10,
+      paddingVertical: 5,
+      borderRadius:5,
     },
   
   /*MODAL STYLE*/ 
