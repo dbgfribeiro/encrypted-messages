@@ -5,6 +5,9 @@ import { StyleSheet,
         TouchableOpacity,
         Pressable,
         Dimensions,
+        ScrollView,
+        FlatList,
+        SafeAreaView,
         Platform,
         Button,
         Image,
@@ -17,11 +20,15 @@ import { BlurView } from 'expo-blur';
 import Carousel from '../Components/Carousel';
 import {keysData} from '../Data/KeysData';
 
-
 import * as ImagePicker from 'expo-image-picker';
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
 import { color } from 'react-native-reanimated';
 
+
+import {alphabet} from '../Data/Alphabet';
+
+const {width, height} = Dimensions.get("window");
+const numCols = 3;
 
 const HomeScreen = (props) => {
 
@@ -30,6 +37,17 @@ const HomeScreen = (props) => {
       require("../assets/a.png"),
       require("../assets/x.png"),
     ];
+
+    
+    const renderAlphabet = ({item, index}) => {
+      let {alphabetItem,alphabetImage,alphabetText} = styles
+      return(
+        <View style={alphabetItem}>
+          <Image style={alphabetImage} source={item.ref}/>
+          <Text style={alphabetText}>{item.key}</Text>
+        </View>
+      )
+    }
 
     var iconDisplay = 0;
     const [alphabetDisplay, setAlphabetDisplay] = useState(false);
@@ -40,6 +58,7 @@ const HomeScreen = (props) => {
       iconDisplay = 0;
     }
 
+    const [letters, setLetters] = useState(alphabet);
     const [modalVisible, setModalVisible] = useState(false);
 
 
@@ -51,16 +70,10 @@ const HomeScreen = (props) => {
   
     /*---LOAD CAMERA ROLL IMAGE---*/
     const [image, setImage] = useState(null);
-    const [imageVisible, setImageVisible] = useState(false);
-    var cameraRoll = '+';
-    if(imageVisible == true){
-      cameraRoll = 'x';
-    }
-    else{
-      var cameraRoll = '+';
-    }
+    const [imageVisible, setImageVisible] = useState(true);
 
 
+    //camera permission
     useEffect(() => {
         (async () => {
         const { status } = await Camera.requestPermissionsAsync();
@@ -75,19 +88,16 @@ const HomeScreen = (props) => {
         return <Text>No access to camera</Text>;
     }
 
-
-  
     //camera roll image pick
-    const {width, height} = Dimensions.get("window")
     const PickImage = async() => {
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
-        //allowsEditing: true,
         aspect:[16,9],
         quality:1
       })
       if(!result.cancelled){
-        setImage(result.uri)
+        setImageVisible(!imageVisible);
+        setImage(result.uri);
       }
     }
 
@@ -122,14 +132,18 @@ const HomeScreen = (props) => {
             <BlurView
               intensity={90}
               style={styles.modalView}>
-                <Text style={styles.modalText}>
-                Este projeto foca-se na criação de uma língua que possibilite a interação entre pelo menos dois indivíduos, utilizando a criptologia como ferramenta para traduzir palavras em formas.
-                O projeto evolui assim que os utilizadores se sintam confortáveis para explorar a língua.
-                {"\n"}{"\n"}
-                Acreditamos que ao possibilitar esta oportunidade de progressão provoquemos uma sensação de conquista no utilizador e que isso o impulsione a explorar mais.
-                {"\n"}{"\n"}
-                Todo o projeto também proporciona ao utilizador uma oportunidade de aprendizagem e desenvolvimento pessoal, neste caso um processo de aprendizagem rápido, possivelmente agilizado com a interação social.
-                </Text>
+
+              <Text style={styles.baseTitle}>alphabet.</Text>
+
+            <ScrollView>
+              <FlatList
+                data={alphabet}
+                renderItem={renderAlphabet}
+                keyExtractor={(item,index) => index.toString()}
+                numColumns={numCols}
+              />
+            </ScrollView>
+        
               </BlurView>
             </View>
            </Modal>
@@ -151,18 +165,31 @@ const HomeScreen = (props) => {
         minZoom={0.5}
         zoomStep={0.5}
         initialZoom={1}
-        bindToBorders={true}
+        bindToBorders={false}
         captureEvent={true}
         >
           <Image
             source={{uri:image}}
             style={{
-              flex: 1, width: null, height: '100%'
+              flex: 1, width: null, height: '100%',
+              resizeMode:'contain'
               }}
           />
+          
           </ReactNativeZoomableView>
+          
+          <TouchableOpacity
+            style={styles.importImage}
+            onPress = { () => {
+              setImageVisible(!imageVisible);
+              setImage(null);
+            }}
+          >
+          <Text style={{color:'#1f1f1f',fontSize:'24', fontWeight:'bold'}}>x</Text>
+          </TouchableOpacity>
         </View>
         }
+
       <Carousel  data = {keysData}/>
       </Camera>
 
@@ -179,23 +206,14 @@ const HomeScreen = (props) => {
       </TouchableOpacity>
 
 
+      {imageVisible ? (
       <TouchableOpacity
         style={styles.importImage}
-        onPress={
-            () => {
-              
-              }
-           }
+        onPress={PickImage}
       >
-        <Button
-          title={cameraRoll}
-          color="#1f1f1f"
-          fontSize="64"
-          onPress={PickImage}/>
+      <Text style={{color:'#1f1f1f',fontSize:'24', fontWeight:'bold',}}>+</Text>
       </TouchableOpacity>
-
-      
-      
+      ) : null}
       
 
     </View>
@@ -239,26 +257,37 @@ const styles = StyleSheet.create({
       backgroundColor:'#EDEDED',
       position: 'absolute',
       top: 65, left: 20,
-      paddingHorizontal: 10,
-      paddingVertical: 5,
+      width:50,height:50,
       borderRadius:5,
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+      flex:1
     },
+
   
   /*MODAL STYLE*/ 
   
     centeredView: {
       justifyContent: 'center',
       alignItems: 'center',
-      flex:1
+      flex:1,
+      backgroundColor:'rgba(0,0,0,0.75)'
     },
     modalView: {
-      margin: 20,
-      height: 600,
+      marginTop:15,
+      paddingVertical:15,
+      width:375,
+      height: 625,
       backgroundColor: "#EDEDED",
       overflow: 'hidden',
       borderRadius: 15,
-      paddingVertical: 100,
-      paddingHorizontal: 35,
       alignItems: "center",
       shadowColor: "#000",
       shadowOffset: {
@@ -269,14 +298,29 @@ const styles = StyleSheet.create({
       shadowRadius: 4,
       elevation: 5
     },
-    textStyle: {
-      color: "#FFF",
-      fontWeight: "bold",
+
+    baseTitle: {
+      width: '100%',
+      fontSize: 32,
+      fontFamily: 'SpaceMono_700Bold',
+      paddingHorizontal:30,
+      paddingBottom:10
+   },
+    alphabetItem:{
+      padding:10,
+      margin:10,
+      width: 90,
     },
-    modalText: {
-      marginBottom: 15,
-      textAlign: "left",
-      color: "#1F1F1F"
+    alphabetImage:{
+      width: '100%',
+      height: undefined,
+      aspectRatio: 1,
+      borderWidth: 0.5,
+    },
+    alphabetText:{
+      textAlign:'center',
+      marginTop: 10,
+      fontFamily: 'SpaceMono_400Regular',
     }
   });
 

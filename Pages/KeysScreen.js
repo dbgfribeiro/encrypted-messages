@@ -13,8 +13,8 @@ import Grid from '../Components/Grid'
 const KeysContainer = (props) => {
   const {keysData} = props;
   return keysData.map((item) => (
-    <View style={styles.myKeys}>
-      <Image style={styles.keyImage} source={{uri: item.url}}/>
+    <View style={styles.myKeys} key={item.id}>
+      <Image style={styles.keyImage} source={item.ref}/>
       <Text style={styles.keyTitle}>{item.title}</Text>
     </View>
   ))
