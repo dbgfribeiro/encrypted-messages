@@ -15,8 +15,8 @@ const Button = ({index, menuSelection, onPressHeader,item}) => {
     },[menuSelection])
 
     return (
-        <TouchableOpacity  key={index} onPress={() => {onPressHeader(index)}} style={isFocused ? {opacity:1} : {opacity:0.5} , styles.button}>
-                <Text style={styles.buttonContent}>{item}</Text>
+        <TouchableOpacity  key={index} onPress={() => {onPressHeader(index)}} style={styles.button}>
+                <Text style={[isFocused ? {opacity:1} : {opacity:0.5} , styles.buttonContent]}>{item}</Text>
         </TouchableOpacity>
     )
 }

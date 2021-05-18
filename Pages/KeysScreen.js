@@ -3,8 +3,8 @@ import { StyleSheet,
         View,
         ScrollView,
         Text,
-        Image} from 'react-native';
-
+        Image,
+        Button} from 'react-native';
 
 import {keysData} from '../Data/KeysData';
 import TopBar from "../Components/TopBar"
@@ -34,13 +34,19 @@ const KeysScreen = (props) => {
           <Text style={styles.baseTitle}>keys.</Text>
           <TopBar labels={["My keys","New"]} onPressHeader={onPressHeader} menuSelection={menuSelection}/>
         </View>
+
         {menuSelection == 0 && 
         <ScrollView>
           <KeysContainer keysData={keys} />
         </ScrollView>
         }
+
         {menuSelection == 1 && 
           <View style={styles.newKey}>
+            <Button
+              title="random"
+              //onPress={() => window.location.reload(false)}
+            />
             <Grid style={styles.grid}/>  
           </View>
         }

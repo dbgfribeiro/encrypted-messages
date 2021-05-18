@@ -104,6 +104,7 @@ const HomeScreen = (props) => {
     
     return (
       
+      
         <View style={styles.container} >
 
            <Modal
@@ -315,7 +316,8 @@ const styles = StyleSheet.create({
       width: '100%',
       height: undefined,
       aspectRatio: 1,
-      borderWidth: 0.5,
+      borderRadius:5,
+      backgroundColor:'rgba(237,237,237,0.15)'
     },
     alphabetText:{
       textAlign:'center',
