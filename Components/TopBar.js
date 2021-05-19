@@ -9,8 +9,7 @@ const Button = ({index, menuSelection, onPressHeader,item}) => {
     const [isFocused, setIsFocused] = useState(index == menuSelection);
 
     useEffect(() => {
-        
-        console.log(menuSelection,index)
+    
         setIsFocused(index == menuSelection);
     },[menuSelection])
 

@@ -32,13 +32,7 @@ const numCols = 3;
 
 const HomeScreen = (props) => {
 
-    /*---TOGGLE ALPHABET BUTTONS---*/
-    const alphabetIcons = [
-      require("../assets/a.png"),
-      require("../assets/x.png"),
-    ];
-
-    
+    /*---ALPHABET CONTAINER---*/
     const renderAlphabet = ({item, index}) => {
       let {alphabetItem,alphabetImage,alphabetText} = styles
       return(
@@ -49,6 +43,11 @@ const HomeScreen = (props) => {
       )
     }
 
+    /*---TOGGLE ALPHABET POPUP BUTTONS---*/
+    const alphabetIcons = [
+      require("../assets/a.png"),
+      require("../assets/x.png"),
+    ];
     var iconDisplay = 0;
     const [alphabetDisplay, setAlphabetDisplay] = useState(false);
     if(alphabetDisplay == true){
@@ -57,10 +56,10 @@ const HomeScreen = (props) => {
     else{
       iconDisplay = 0;
     }
-
     const [letters, setLetters] = useState(alphabet);
     const [modalVisible, setModalVisible] = useState(false);
 
+    
 
     
     /*---LOAD MOBILE CAMERA---*/
@@ -103,25 +102,22 @@ const HomeScreen = (props) => {
 
     
     return (
-      
-      
-        <View style={styles.container} >
-
-           <Modal
-            animationType="fade"
-            transparent={true}
-            useNativeDriver={true}
-            visible={modalVisible}
-            onRequestClose={() => {
-              Alert.alert("Modal has been closed.");
-              setModalVisible(!modalVisible);
-            }}
-          >
-            <View style={styles.centeredView}>
-            
-            <TouchableOpacity
-              style={styles.iconContainer}
-              onPress={
+    
+      <View style={styles.container} >
+        <Modal
+          animationType="fade"
+          transparent={true}
+          useNativeDriver={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible(!modalVisible);
+          }}
+        >
+        <View style={styles.centeredView}>
+          <TouchableOpacity
+            style={styles.iconContainer}
+            onPress={
               () => {
               setModalVisible(!modalVisible);
               setAlphabetDisplay(!alphabetDisplay);

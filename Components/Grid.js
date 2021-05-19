@@ -16,14 +16,12 @@ export default class ProcessingGrid extends React.Component {
     let rows = 6;
     let conta1 = 0;
 
-    //let font = p.loadFont('assets/spacemono-regular-webfont.woff2');
+    //let font = p.loadFont('assets/SpaceMono-Regular.ttf');
 
     //create grid
-
     let grid = new Array(rows).fill(0).map(() => new Array(cols).fill(0));
 
-    let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
-    ];
+    let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",];
 
     p.setup = () => {
       p.size(320, 320, p.P3D);
@@ -69,9 +67,12 @@ export default class ProcessingGrid extends React.Component {
           //p.textSize(32);
           //p.textFont(font);
           p.fill(0, 102, 153);
-          //p.text(grid[i][j].getletra(), grid[i][j].getx(), grid[i][j].gety());
+          //p.text("hello" , p.width/2 , p.height/2);
 
-          p.ellipse(grid[i][j].getx(), grid[i][j].gety(), 20, 20);
+
+
+          //p.text(grid[i][j].getletra(), grid[i][j].getx(), grid[i][j].gety());
+          //p.ellipse(grid[i][j].getx(), grid[i][j].gety(), 20, 20);
         }
       }
     };
