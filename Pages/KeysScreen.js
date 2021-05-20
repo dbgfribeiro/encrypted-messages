@@ -5,10 +5,12 @@ import { StyleSheet,
         Text,
         Image,
         Button,} from 'react-native';
-
+import { WebView } from 'react-native-webview';
 import {keysData} from '../Data/KeysData';
 import TopBar from "../Components/TopBar"
-import Grid from '../Components/Grid' 
+//import Grid from '../Components/Grid' 
+
+const myHtmlFile = require("../p5js/grid.html");
 
 const KeysContainer = (props) => {
   const {keysData} = props;
@@ -49,13 +51,7 @@ const KeysScreen = (props) => {
         }
 
         {menuSelection == 1 && 
-          <View style={styles.newKey}>
-            <Button
-              title="random"
-              //onPress={() => window.location.reload(false)}
-            />
-            <Grid style={styles.grid}/>  
-          </View>
+          <WebView source={myHtmlFile} style={styles.grid}/>
         }
       </View>
     )
@@ -94,6 +90,10 @@ const styles = StyleSheet.create({
 
   newKey:{
     top: 30,
+  },
+
+  grid:{
+    backgroundColor:'#EDEDED'
   }
 
 });
