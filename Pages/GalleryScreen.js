@@ -13,6 +13,7 @@ import {sentMessages} from '../Data/Messages';
 const numCols = 2;
 
 const renderSentMessages = ({item, index}) => {
+  
   let {messagesItem,messagesImage,messagesText} = styles
   return(
     <View style={messagesItem}>

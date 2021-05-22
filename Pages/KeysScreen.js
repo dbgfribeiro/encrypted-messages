@@ -4,8 +4,9 @@ import { StyleSheet,
         ScrollView,
         Text,
         Image,
-        Button,TouchableOpacity,
-        Animated} from 'react-native';
+        Button,
+        TouchableOpacity,
+        Dimensions} from 'react-native';
 import { WebView } from 'react-native-webview';
 import {keysData} from '../Data/KeysData';
 import TopBar from "../Components/TopBar"
@@ -14,8 +15,9 @@ import { abs } from 'react-native-reanimated';
 //import Grid from '../Components/Grid' 
 
 
-
 //const myHtmlFile = require("../p5js/grid.html");
+
+const {width, height} = Dimensions.get("window");
 
 
 const KeysContainer = (props) => {
@@ -29,8 +31,12 @@ const KeysContainer = (props) => {
 }
 
 const KeysScreen = (props) => {
+  
     const [keys, setKeys] = useState(keysData);
     const [menuSelection, setMenuSelection] = useState(0);
+
+    const [keySent, setKeySent] = useState(false);
+    console.log(keySent);
 
     const onPressHeader = (index) => {
       setMenuSelection(index);
@@ -43,33 +49,36 @@ const KeysScreen = (props) => {
           <TopBar labels={["My keys","New"]} onPressHeader={onPressHeader} menuSelection={menuSelection}/>
         </View>
 
-        {menuSelection == 0 && 
+        {menuSelection == 0 && keySent == false &&
         <ScrollView>
           <KeysContainer keysData={keys} />
         </ScrollView>
         }
 
-        {menuSelection == 1 && 
+        {menuSelection == 1 && keySent == false &&
         <View style={{flex:1}}>
         <WebView source={{ uri: 'https://student.dei.uc.pt/~dbribeiro/p5js/grid.html' }} style={styles.grid}/>
 
 
           <TouchableOpacity
             style={styles.submitGrid}
-            //onPress={() => {}}
-            >
+            onPress={() => {
+              setKeySent(!keySent);
+            }}>
             <Image style={{width:30,height:30}} source={require('../assets/arrow.png')}/>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.costumGrid}
-            //onPress={() => {}}
-            >
           </TouchableOpacity>
 
         </View>
         }
+
+        {keySent == true && setTimeout(()=> {setMenuSelection(menuSelection==0); setKeySent(keySent==false);}, 2000) &&
+        <View style={styles.sent}>
+        <Text style={styles.sentMessage}>successfully created key!</Text>
+        </View>
+        }
+
       </View>
+      
     )
 }
 
@@ -123,6 +132,23 @@ const styles = StyleSheet.create({
     bottom:12,
     left:0
   },
+
+  sent:{
+    backgroundColor:'#ededed',
+    position:'absolute',
+    height:height,
+    width:width,
+    left:0,
+    top:0
+  },
+  sentMessage:{
+    textAlign: 'center',
+    fontSize: 32,
+    fontFamily: 'SpaceMono_700Bold',
+    width: '100%',
+    top:'40%',
+    paddingHorizontal:20
+  }
 });
 
 export default KeysScreen;

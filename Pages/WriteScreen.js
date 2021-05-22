@@ -91,9 +91,16 @@ const WriteScreen = (props) => {
         {generatedMessage == true && 
         <View style={styles.chooseContainer}>
         <View style={styles.chooseHeader}>
-            <Text style={styles.chooseTitle}>Your message:</Text>
-            <TouchableOpacity
-            style={styles.backCont}
+          </View>
+
+          <View style={styles.messageDisplay}>
+            {/* <Text>
+              {text.split(' ').map((word) => word).join(' ')}
+            </Text> */}
+            <Image source={require('../assets/hello.png') } style={{width:'100%',resizeMode: 'contain',flex: 1,}}/>
+          </View>
+          <TouchableOpacity
+            style={[styles.backCont , {bottom:-250, left:30,position:'absolute'}]}
             onPress={() => {
               setKeySelector(true);
               setGeneratedMessage(false);
@@ -101,13 +108,21 @@ const WriteScreen = (props) => {
             >
             <Image style={styles.back} source={require('../assets/arrow.png')}/>
           </TouchableOpacity>
-          </View>
 
-          <View style={styles.messageDisplay}>
-            <Text>
-              {text.split(' ').map((word) => word).join(' ')}
-            </Text>
-          </View>
+          <TouchableOpacity
+            style={[styles.share , {bottom:-250, right:30,position:'absolute'}]}
+            // onPress={() => {}}
+            >
+            <Image style={styles.back} source={require('../assets/share.png')}/>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity
+            style={[styles.share , {bottom:-250, right:70,position:'absolute'}]}
+            // onPress={() => {}}
+            >
+            <Image style={styles.back} source={require('../assets/save.png')}/>
+          </TouchableOpacity>
         </View>
         }
         
@@ -124,7 +139,7 @@ const styles = StyleSheet.create({
   },
   baseText:{
     paddingHorizontal: 30,
-    paddingTop: 60,
+    paddingTop: 80,
     paddingBottom: 4,
   },
   baseTitle: {
@@ -193,10 +208,17 @@ const styles = StyleSheet.create({
     transform: [
       { scaleX: -1 }
     ],
-  },
-  back:{
+    flexDirection:'row-reverse',
     width:25,
     height:25,
+  },
+  share:{
+    width:25,
+    height:25,
+  },
+  back:{
+    width:'100%',
+    height:'100%',
     alignItems:'center',
   },
   myKeys:{
@@ -216,9 +238,9 @@ const styles = StyleSheet.create({
 
   messageDisplay:{
     borderWidth:1,
-    width:320,
-    height:320,
-    margin: 20,
+    width:350,
+    height:350,
+    marginTop:30,
     alignItems:'center',
     justifyContent:'center'
   }

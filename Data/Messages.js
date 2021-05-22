@@ -17,6 +17,6 @@ export const sentMessages =
     {
         title: 'key Y',
         ref: require('../assets/gallery/sent2.png'),
-        id: 1
+        id: 2
     },
 ]

@@ -22,7 +22,6 @@ import {keysData} from '../Data/KeysData';
 
 import * as ImagePicker from 'expo-image-picker';
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
-import { color } from 'react-native-reanimated';
 
 
 import {alphabet} from '../Data/Alphabet';
@@ -312,8 +311,8 @@ const styles = StyleSheet.create({
       width: '100%',
       height: undefined,
       aspectRatio: 1,
-      borderRadius:5,
-      backgroundColor:'rgba(237,237,237,0.15)'
+      //borderRadius:5,
+      //backgroundColor:'rgba(237,237,237,0.15)'
     },
     alphabetText:{
       textAlign:'center',
