@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   },
   baseText:{
     paddingHorizontal: 30,
-    paddingTop: 80,
+    paddingTop: 60,
     paddingBottom: 4,
   },
   baseTitle: {

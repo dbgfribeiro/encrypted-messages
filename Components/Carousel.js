@@ -49,7 +49,7 @@ const Carousel = ({data}) => {
                             <Animated.View
                                 key = {i}
                                 style = {{opacity,
-                                height: 50, width: 50,
+                                height: 15, width: 15,
                                 backgroundColor: '#EDEDED',
                                 margin: 8,
                                 borderRadius:100,
@@ -66,10 +66,10 @@ const Carousel = ({data}) => {
 const styles = StyleSheet.create({
     keysViewer:{
         position: 'absolute',
-        top: height / 5
+        top: height / 4.5,
     },
     dotView:{
-        marginTop: 80,
+        marginTop: 15,
         flexDirection: 'row',
         justifyContent: 'center',
     },

@@ -1,9 +1,36 @@
 import React, {useState} from 'react';
 import { StyleSheet,
         View,
-        Text} from 'react-native';
+        Text,
+        Image,
+        FlatList} from 'react-native';
 
-import TopBar from "../Components/TopBar"               
+import ImageModal from 'react-native-image-modal';
+import TopBar from "../Components/TopBar"    
+import {recievedMessages} from '../Data/Messages';   
+import {sentMessages} from '../Data/Messages';  
+
+const numCols = 2;
+
+const renderSentMessages = ({item, index}) => {
+  let {messagesItem,messagesImage,messagesText} = styles
+  return(
+    <View style={messagesItem}>
+      <Image style={messagesImage} source={item.ref}/>
+      <Text style={messagesText}>{item.title}</Text>
+    </View>
+  )
+}
+
+const renderRecievedMessages = ({item, index}) => {
+  let {messagesItem,messagesImage,messagesText} = styles
+  return(
+    <View style={messagesItem}>
+      <Image style={messagesImage} source={item.ref}/>
+      <Text style={messagesText}>{item.title}</Text>
+    </View>
+  )
+}
 
         const GalleryScreen = (props) => {
 
@@ -22,13 +49,25 @@ import TopBar from "../Components/TopBar"
 
                 {menuSelection == 0 && 
                   <View>
-                    <Text style={styles.galleryText}>Recieved Images</Text>
+                  <FlatList
+                      data={recievedMessages}
+                      renderItem={renderRecievedMessages}
+                      keyExtractor={(item,index) => index.toString()}
+                      numColumns={numCols}
+                      style={styles.galleryContainer}
+                    />
                   </View>
                 }
 
                 {menuSelection == 1 && 
                   <View>
-                    <Text style={styles.galleryText}>Images Sent</Text>
+                    <FlatList
+                      data={sentMessages}
+                      renderItem={renderSentMessages}
+                      keyExtractor={(item,index) => index.toString()}
+                      numColumns={numCols}
+                      style={styles.galleryContainer}
+                    />
                   </View>
                 }
               </View>
@@ -42,7 +81,7 @@ import TopBar from "../Components/TopBar"
         },
         baseText:{
           paddingHorizontal: 30,
-          paddingTop: 80,
+          paddingTop: 60,
           paddingBottom: 4,
         },
         baseTitle: {
@@ -50,15 +89,27 @@ import TopBar from "../Components/TopBar"
           fontFamily: 'SpaceMono_700Bold',
           color: '#1f1f1f'
         },
-        galleryText: {
-          marginTop: 30,
-          paddingHorizontal: 30,
-          paddingBottom: 4,
-          fontFamily: 'SpaceMono_700Bold',
-          fontSize: 16,
-          color: '#1f1f1f'
+        galleryContainer:{
+          paddingHorizontal: 20,
+          height:'100%',
+          marginTop:10
         },
-    
+        messagesItem:{
+          margin:10,
+          width: 165,
+        },
+        messagesImage:{
+          width: '100%',
+          height: undefined,
+          aspectRatio: 1,
+          borderRadius:5,
+          backgroundColor:'rgba(237,237,237,0.15)'
+        },
+        messagesText:{
+          textAlign:'left',
+          marginTop: 10,
+          fontFamily: 'SpaceMono_700Bold',
+        }
        
       });
       
