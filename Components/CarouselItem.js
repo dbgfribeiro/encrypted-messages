@@ -1,50 +1,44 @@
-import React from 'react';
-import { StyleSheet,
-    View,
-    Text,
-    Image,
-    Dimensions
-  } from 'react-native';
+import React from "react";
+import { StyleSheet, View, Text, Image, Dimensions } from "react-native";
 
+const { width, height } = Dimensions.get("window");
 
-const {width , height} = Dimensions.get('window')
-
-const CarouselItem = ({item}) => {
-    return(
-        <View style={styles.cardView}>
-                    <View style={styles.textView}>
-                <Text style={styles.itemTitle}>{item.title}</Text>
-            </View>
-            <Image style={styles.image} source={item.ref}/>
-        </View>
-    )
-}
+const CarouselItem = ({ item }) => {
+  return (
+    <View style={styles.cardView}>
+      <View style={styles.textView}>
+        <Text style={styles.itemTitle}>{item.title}</Text>
+      </View>
+      <Image style={styles.image} source={item.ref} />
+    </View>
+  );
+};
 const styles = StyleSheet.create({
-    cardView:{
-        flex: 1,
-        margin: 20,
-        borderRadius: 1000,
-        width: 375,
-        height: 375,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: "rgba(237,237,237,0.2)",
-    },
-    textView:{
-        position: 'absolute',
-        bottom: -35,
-        margin: 10,
-    },
-    image:{
-        width: width - 20,
-        height: height / 3,
-        borderRadius: 15,
-        resizeMode: 'contain',
-        width:250,
-    },
-    itemTitle:{
-        fontFamily: 'SpaceMono_700Bold',
-        color: '#fff'
-    }
+  cardView: {
+    flex: 1,
+    margin: 20,
+    borderRadius: 1000,
+    width: 375,
+    height: 375,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(237,237,237,0.2)",
+  },
+  textView: {
+    position: "absolute",
+    bottom: -35,
+    margin: 10,
+  },
+  image: {
+    width: width - 20,
+    height: height / 3,
+    borderRadius: 15,
+    resizeMode: "contain",
+    width: 250,
+  },
+  itemTitle: {
+    fontFamily: "SpaceMono_700Bold",
+    color: "#fff",
+  },
 });
-export default CarouselItem
+export default CarouselItem;
