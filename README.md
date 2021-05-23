@@ -18,8 +18,8 @@
 <div>
   <h2></h2>
   <h3>Used tools</h3>
-  <img src="https://i.imgur.com/k7dAuko.png"/>
-  <img src="https://i.imgur.com/oa1Mf5P.png"/>
+  <img src="https://i.imgur.com/ryhMEDh.png"/>
+  <img src="https://i.imgur.com/oim33Oz.png"/>
 </div>
 
 <div>
