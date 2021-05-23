@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "p4cam",
-    "slug": "PMA_Project",
+    "name": "encrypted-messages",
+    "slug": "PAMI_Project",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ededed"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -18,19 +18,19 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.uc.p4cam"
+      "bundleIdentifier": "com.uc.encryptedmessages"
     },
     "android": {
-      "package": "com.uc.p4cam",
+      "package": "com.uc.encryptedmessages",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#ededed"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "PMA Project for UC"
+    "description": "PAMI Project for UC"
   }
 }
