@@ -16,6 +16,7 @@ let grid = new Array(rows).fill(0).map(() => new Array(cols).fill(0));
 
 let grid2 = new Array(rows2).fill(0).map(() => new Array(cols2).fill(0));
 
+<<<<<<< HEAD
 let alfabeto = [
   "A",
   "B",
@@ -44,6 +45,9 @@ let alfabeto = [
   "Y",
   "Z",
 ];
+=======
+let alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",];
+>>>>>>> b05a2f792e8c64c4a051aea576468a3d34f12a95
 
 let myFont;
 function preload() {
