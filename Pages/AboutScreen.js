@@ -196,15 +196,20 @@ const AboutScreen = (props) => {
                 </Text>
                 <View
                   style={{
-                    padding: 0,
                     height: 325,
                     padding: 40,
                     marginVertical: 15,
+                    alignItems: "center",
                   }}
                 >
                   <Image
                     source={require("../assets/rules/key.png")}
-                    style={{ width: "100%", resizeMode: "contain", flex: 1 }}
+                    style={{
+                      height: "100%",
+                      width: "90%",
+                      borderRightWidth: 1,
+                      borderBottomWidth: 1,
+                    }}
                   />
                 </View>
                 <Text style={styles.infoContent}>
@@ -301,28 +306,28 @@ const AboutScreen = (props) => {
                 </View>
 
                 <Text style={styles.infoContent}>
-                  <Text style={{ fontFamily: "SpaceMono_700Bold" }}>A -</Text>{" "}
-                  1 circle (1st letter after{" "}
+                  <Text style={{ fontFamily: "SpaceMono_700Bold" }}>A -</Text> 1
+                  circle (1st letter after{" "}
                   <Text style={{ fontFamily: "SpaceMono_700Bold" }}>B</Text>)
                 </Text>
                 <Text style={styles.infoContent}>
-                  <Text style={{ fontFamily: "SpaceMono_700Bold" }}>N -</Text>{" "}
-                  2 circle (2nd letter after{" "}
+                  <Text style={{ fontFamily: "SpaceMono_700Bold" }}>N -</Text> 2
+                  circle (2nd letter after{" "}
                   <Text style={{ fontFamily: "SpaceMono_700Bold" }}>B</Text>)
                 </Text>
                 <Text style={styles.infoContent}>
-                  <Text style={{ fontFamily: "SpaceMono_700Bold" }}>A -</Text>{" "}
-                  3 circle (3rd letter after{" "}
+                  <Text style={{ fontFamily: "SpaceMono_700Bold" }}>A -</Text> 3
+                  circle (3rd letter after{" "}
                   <Text style={{ fontFamily: "SpaceMono_700Bold" }}>B</Text>)
                 </Text>
                 <Text style={styles.infoContent}>
-                  <Text style={{ fontFamily: "SpaceMono_700Bold" }}>N -</Text>{" "}
-                  4 circle (4th letter after{" "}
+                  <Text style={{ fontFamily: "SpaceMono_700Bold" }}>N -</Text> 4
+                  circle (4th letter after{" "}
                   <Text style={{ fontFamily: "SpaceMono_700Bold" }}>B</Text>)
                 </Text>
                 <Text style={styles.infoContent}>
-                  <Text style={{ fontFamily: "SpaceMono_700Bold" }}>A -</Text>{" "}
-                  5 circle (5th letter after{" "}
+                  <Text style={{ fontFamily: "SpaceMono_700Bold" }}>A -</Text> 5
+                  circle (5th letter after{" "}
                   <Text style={{ fontFamily: "SpaceMono_700Bold" }}>B</Text>)
                 </Text>
 
@@ -332,16 +337,36 @@ const AboutScreen = (props) => {
                     height: 325,
                     padding: 40,
                     marginVertical: 15,
+                    alignItems: "center",
                   }}
                 >
                   <Image
                     source={require("../assets/rules/keydots.png")}
                     style={{
-                      width: "100%",
-                      resizeMode: "contain",
-                      flex: 1,
-                      padding: 10,
+                      height: "100%",
+                      width: "90%",
+                      borderRightWidth: 1,
+                      borderBottomWidth: 1,
                     }}
+                  />
+                </View>
+
+                <Text style={styles.infoContent}>
+                  If a word has more than 10 letters how do we do it? The cycle
+                  starts all over again, however, the circles have an outline
+                  instead of fill.
+                </Text>
+
+                <View
+                  style={{
+                    height: 150,
+                    padding: 40,
+                    marginVertical: 15,
+                  }}
+                >
+                  <Image
+                    source={require("../assets/rules/dots.png")}
+                    style={{ width: "100%", resizeMode: "contain", flex: 1 }}
                   />
                 </View>
 

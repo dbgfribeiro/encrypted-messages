@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js"></script>
+    <meta charset="utf-8" />
+    <meta meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/write.css">
+
+</head>
+
+<body>
+
+    <div class="write-container">
+        <div class="saudation">
+            <h2>hi, Diogo</h2>
+            <p>what's up?</p>
+        </div>
+
+        <div class="input-message">
+            <input id="message" type="text" placeholder="your message" value="">
+            <button type="button" id="getMessage"><img src="data/arrow.png"></button>
+            <p id="error">please write your message</p>
+        </div>
+    </div>
+
+    <div class="choose-key">
+        <div class="keys-container">
+            <button id="display">
+                <div class="key-card">
+                    <img src="data/keys/code.png">
+                    <h3>by Creators</h3>
+                </div>
+            </button>
+            <button>
+                <div class="key-card">
+                    <img src="data/keys/key1.png">
+                    <h3>by Alexandre Pinho</h3>
+                </div>
+            </button>
+            <button>
+                <div class="key-card">
+                    <img src="data/keys/key2.png">
+                    <h3>by Carlota Silva</h3>
+                </div>
+            </button>
+            <button>
+                <div class="key-card">
+                    <img src="data/keys/key3.png">
+                    <h3>by Diogo Ribeiro</h3>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="scroll-message">
+        <div class="encrypted-message" id="encrypted-message"></div>
+    </div>
+
+    <div class="controls">
+        <button type="button" id="back"><img src="data/arrow.png"></button>
+        <div class="controls-share">
+            <button type="button" id="back"><img src="data/save.png"></button>
+            <button type="button" id="back"><img src="data/share.png"></button>
+        </div>
+    </div>
+
+    <script src="js/getmessage.js"></script>
+    <script src="js/displaymessage.js"></script>
+
+</body>
+
+</html>

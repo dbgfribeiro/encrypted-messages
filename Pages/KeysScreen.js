@@ -13,7 +13,7 @@ import { WebView } from "react-native-webview";
 import { keysData } from "../Data/KeysData";
 import TopBar from "../Components/TopBar";
 
-//const myHtmlFile = require("../p5js/grid.html");
+//const myHtmlFile = require("../p5js/gridrandom.html");
 
 const { width, height } = Dimensions.get("window");
 
@@ -59,7 +59,7 @@ const KeysScreen = (props) => {
         <View style={{ flex: 1 }}>
           <WebView
             source={{
-              uri: "https://student.dei.uc.pt/~dbribeiro/p5js/grid.html",
+              uri: "https://student.dei.uc.pt/~dbribeiro/p5js/gridrandom.html",
             }}
             style={styles.grid}
           />

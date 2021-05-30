@@ -40,11 +40,17 @@ const BottomBar = ({ state, descriptors, navigation }) => {
           >
             <Image
               style={[
-                isFocused ? { opacity: 1 } : { opacity: 0.5 },
+                isFocused ? { opacity: 1} : { opacity: 0.5 },
                 styles.buttonImg,
               ]}
               source={icons[index]}
             />
+            <View
+            style={[
+              isFocused ? { opacity: 1} : { opacity: 0},
+              styles.buttonUnderline,
+              ]}
+/>
           </TouchableOpacity>
         );
       })}
@@ -61,6 +67,13 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
   },
+  buttonUnderline:{
+    backgroundColor:'#1f1f1f',
+    width:35,
+    height:3,
+    marginTop:10,
+    marginLeft:-35
+  },
 
   mainContainer: {
     backgroundColor: "#EDEDED",
@@ -68,8 +81,8 @@ const styles = StyleSheet.create({
     //height: 100,
     justifyContent: "space-around",
     alignItems: "center",
-    paddingTop: 20,
-    paddingBottom: 40,
+    paddingTop: 25,
+    paddingBottom: 35,
 
     shadowColor: "#1F1F1F",
     shadowOffset: {

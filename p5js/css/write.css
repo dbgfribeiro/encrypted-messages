@@ -1,0 +1,125 @@
+body {
+  overflow: hidden
+}
+.write-container {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.choose-key {
+  display: none;
+  margin-top: 50px;
+}
+
+.choose-key button {
+  border-style: none;
+  background-color: transparent;
+}
+button:active {
+  opacity: 0.5;
+}
+.key-card {
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.key-card img {
+  width: 55%;
+}
+.key-card h3 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+
+.encrypted-message {
+  max-height: 500px;
+  width: 300px;
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+
+  display: none;
+}
+
+.encrypted-message::-webkit-scrollbar {
+  display: none;
+}
+
+canvas{
+  width: 100%;
+}
+
+.saudation {
+  padding-bottom: 50px;
+}
+.saudation h2 {
+  font-size: 24px;
+}
+.saudation p {
+  font-size: 18px;
+}
+.input-message input[type="text"] {
+  width: 100%;
+  background-color: transparent;
+  border-style: none;
+  border-bottom: 2px solid #1f1f1f;
+  font-size: 16px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  padding: 5px 0;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+.input-message button {
+  float: right;
+  border-style: none;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background-color: transparent;
+  margin-top: 20px;
+}
+button img {
+  width: 100%;
+}
+#error {
+  margin-top: 10px;
+  font-size: 14px;
+  color: red;
+  opacity: 0;
+}
+
+.controls {
+  display: none;
+  position: absolute;
+  width: 100%;
+  bottom: 2%;
+}
+
+.controls button {
+  background-color: transparent;
+  border-style: none;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+  transform: scaleX(-1);
+}
+.controls-share button {
+  transform: scaleX(1);
+}
+.controls-share button:first-child {
+  margin-right: 10px;
+}

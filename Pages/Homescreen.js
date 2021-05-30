@@ -95,7 +95,7 @@ const HomeScreen = (props) => {
   return (
     <View style={styles.container}>
       <Modal
-        animationType="fade"
+        animationType="slide"
         transparent={true}
         useNativeDriver={true}
         visible={modalVisible}
